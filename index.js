@@ -51,7 +51,7 @@ const timeout = 5
 
 function run(code, params) {
   const { execFile } = require('child_process');
-  const child = execFile('./thinterpreters/Main', params ? [code, params] : [code], (error, stdout) => {
+  const child = execFile('Main', params ? [code, params] : [code], (error, stdout) => {
     if (error) {     
       console.log(error);
       throw error;
