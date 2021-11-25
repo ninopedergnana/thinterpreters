@@ -1,4 +1,4 @@
-const url = process.env.NODE_ENV || "http://localhost:3001"
+const url = "https://thinterpreters.herokuapp.com/"
 let editor
 let inputField
 
