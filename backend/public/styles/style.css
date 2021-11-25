@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+}
+
+#container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    padding-top: 10px;
+}
+
+.nav-buttons {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+}
+
+.title {
+    display: flex;
+    align-self: flex-start;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+
+#srccode, #params {
+    border: 0.5px solid #eee;
+}
+
+#button-list {
+    display: flex;
+}
+
+#parser{
+    display: flex;
+    height: 100%;
+    width: inherit;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#inputcard {
+    padding: 12px;
+    border-style: solid;
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: #ccc;
+    width: 50%;
+}
+
+.CodeMirror {
+    height: auto;
+    font-size: 18px;
+  }
+
+#outputcard {
+    margin-left: 20px;
+    padding: 12px;
+    border-style: solid;
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: #ccc;
+    width: 50%;
+}
+
+h1 {
+    padding-bottom: 5px;
+    font-size: 1.8rem;
+    font-weight: 1500;
+}
+
+p {
+    padding-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.input-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px 0;
+}
+
+.readOnlyExampleDescription{
+    margin-left: 4%;
+}
+
+.readOnlyExample{
+    padding: 5px;
+    width: 30%;
+    border-style: solid;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #ccc;
+
+}
+
+.examples {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#parse, #run {
+    margin: 0;
+}
+
+.button6 {
+    display: inline-block;
+    padding: 0.5em 1.1em;
+    border-radius:0.15em;
+    margin: 0.3em 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    border-width: 0px;
+    color:#FFFFFF;
+    background-color:#3369ff;
+    text-align:center;
+    position:relative;
+    cursor:pointer;
+}
+
+.button6:active {
+    top:0.1em;
+}
+
+.button6:hover {
+    background-color:#002faf;
+}

@@ -1,0 +1,9 @@
+M1: if x1 = 0 then goto M5
+M2: x1 = x1 - 1
+M3: x0 = x0 + 1
+M4: goto M1
+M5: if x2 = 0 then goto M9
+M6: x2 = x2 - 1
+M7: x0 = x0 + 1
+M8: goto M5
+M9: halt

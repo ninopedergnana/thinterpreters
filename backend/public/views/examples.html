@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/haskell/haskell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/addon/mode/simple.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <script src="./scripts/syntax-highlighting.js"></script>
+        <link rel="stylesheet" href="./styles/style.css">
+    <title>goto parser</title>
+    </head>
+    <body>
+        <div id=container>
+            <div id=nav>
+                <ul class="nav-buttons">
+                    <li>
+                        <a title="Return to the homepage" id="logo"><img src="./images/Haskell-Logo.svg" alt="Haskell Logo" /></a>
+                    </li>
+                    <li>
+                        <a href="/" role="tab"><button id="home" class="button6">Home</button></a>
+                    </li>
+                    <li>
+                        <a href="documentation" role="tab"><button id="documentation" class="button6">Documentation</button></a>
+                    </li>
+                    <li>
+                        <a href="examples" role="tab"><button id="examples" class="button6">Examples</button></a>
+                    </li>
+                </ul>
+            </div>
+            <section class=title>
+                <header>
+                    <h1>
+                        Examples
+                    </h1>
+                    <p>
+                        Copy and Paste these examples into the editor. The examples are ordered by name (alphabetically) and the result of the program is always given by x0.
+                    </p>
+                </header>
+            </section>
+            <div class=examples>
+                <div class=readOnlyExample id=goto-addition></div>
+                <div class=readOnlyExampleDescription>
+                    <h2>Addition</h2>
+                    <p>This Code adds two variables together and returns the result in x0</p>
+                    <div id=goto-addition-params></div>
+                </div>
+            </div>
+            <div class=examples>
+                <div class=readOnlyExample id=goto-multiplication></div>
+                <div class=readOnlyExampleDescription>
+                    <h2>Multiplication</h2>
+                    <p>This Code multiplies two variables and returns the result in x0</p>
+                    <div id=goto-multiplication-params></div>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/examples.js"></script>    
+    </body>
+</html>
