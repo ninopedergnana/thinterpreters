@@ -1,4 +1,3 @@
-const url = "https://thinterpreters.herokuapp.com/"
 let editor
 let inputField
 
@@ -31,8 +30,8 @@ function sendCodeAndParamsToServer() {
     sendToServer(code, params)
 }
 
-function sendToServer(code, params, url) {
-    const url = `${url}/code${params ? `?args=${params}` : ''}`
+function sendToServer(code, params) {
+    const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
     const srcCode = `{"code":${JSON.stringify(code)}}`
     fetch(url, {
         body: srcCode,
