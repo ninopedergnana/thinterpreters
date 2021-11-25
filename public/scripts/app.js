@@ -1,3 +1,4 @@
+const url = process.env.NODE_ENV || "http://localhost:3001"
 let editor
 let inputField
 
@@ -31,7 +32,7 @@ function sendCodeAndParamsToServer() {
 }
 
 function sendToServer(code, params) {
-    const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
+    const url = `${url}/code${params ? `?args=${params}` : ''}`
     const srcCode = `{"code":${JSON.stringify(code)}}`
     fetch(url, {
         body: srcCode,
