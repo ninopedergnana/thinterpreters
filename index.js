@@ -35,7 +35,7 @@ app.post('/code', (req, res) => {
 
 const timeout = 5
 
-function run(code, params) {
+/* function run(code, params) {
   var cp = require('child_process');
   const child = cp.spawnSync('Main', params ? [code, params] : [code], {
     stdio: 'pipe',
@@ -46,6 +46,18 @@ function run(code, params) {
     return `Invalid input: Program terminated after ${timeout}s.`
   }
   return child.stdout.toString()
+} */
+
+
+function run(code, params) {
+  const { execFile } = require('child_process');
+  const child = execFile('Main', params ? [code, params] : [code], (error, stdout) => {
+    if (error) {     
+      console.log(error);
+      throw error;
+    }
+    return stdout.toString();
+  });
 }
 
 app.listen(PORT, () => {
