@@ -31,7 +31,7 @@ function sendCodeAndParamsToServer() {
     sendToServer(code, params)
 }
 
-function sendToServer(code, params) {
+function sendToServer(code, params, url) {
     const url = `${url}/code${params ? `?args=${params}` : ''}`
     const srcCode = `{"code":${JSON.stringify(code)}}`
     fetch(url, {
