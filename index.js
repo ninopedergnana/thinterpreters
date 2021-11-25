@@ -37,7 +37,7 @@ const timeout = 5
 
 function run(code, params) {
   var cp = require('child_process');
-  const child = cp.spawnSync('Main.exe', params ? [code, params] : [code], {
+  const child = cp.spawnSync('./Main.exe', params ? [code, params] : [code], {
     stdio: 'pipe',
     timeout: timeout * 1000
   });
