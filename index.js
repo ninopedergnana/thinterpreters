@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT  || 3001
-const baseUrl = process.env.ENV_URL || "http://localhost:3001";
+const baseUrl = process.env.ENV_URL || `http://localhost:${port}`;
 const cors = require('cors');
 
 app.use(cors())
@@ -49,5 +49,5 @@ function run(code, params) {
 }
 
 app.listen(port, () => {
-  console.log(`Example app listening at PORT: ${port}`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
