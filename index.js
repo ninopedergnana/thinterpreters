@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT  || 3001
-const baseUrl = process.env.ENV_URL || `http://localhost:${port}`;
 const cors = require('cors');
 
 app.use(cors())
