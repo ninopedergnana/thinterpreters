@@ -36,13 +36,9 @@ app.post('/code', (req, res) => {
 const timeout = 5
 
 function run(code, params) {
-  const { spawnSync } = require('child_process');
-  const child = spawnSync('Main.exe', params ? [code, params] : [code], {
-    stdio: [
-      0, // Use parent's stdin for child.
-      'pipe', // Pipe child's stdout to parent.
-      fs.openSync('err.out', 'w'), // Direct child's stderr to a file.
-    ],
+  var cp = require('child_process');
+  const child = cp.spawnSync('Main.exe', params ? [code, params] : [code], {
+    stdio: 'pipe',
     timeout: timeout * 1000
   });
 
