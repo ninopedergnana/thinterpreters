@@ -43,7 +43,7 @@ function run(code, params) {
   });
 
   if (child.status === null) {
-    return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout.toString()}\nCHILD ERROR: ${child.stderr.toString()}`
+    return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
   }
   return child.stdout.toString()
 }
