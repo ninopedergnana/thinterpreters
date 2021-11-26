@@ -36,10 +36,10 @@ app.post('/code', (req, res) => {
 const timeout = 5
 
 function run(code, params) {
-  const { execFileSync } = require('child_process');
-  const child = execFileSync('Main', params ? [code, params] : [code], {
+  const { spawnSync } = require('child_process');
+  const child = spawnSync('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
-    cwd: __dirname 
+    cwd: root 
   })
   .on('error', function( err ){ throw err });
 
