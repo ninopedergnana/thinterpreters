@@ -41,8 +41,6 @@ function run(code, params) {
     timeout: timeout * 1000,
     cwd: __dirname 
   })
-  .on('error', function( err ){ throw err });
-
   if (child.status === null) {
     return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
   }
