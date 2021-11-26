@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const fs = require('fs');
 const cors = require('cors');
+const { pipeline } = require('stream');
 const PORT = process.env.PORT  || 3001
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
@@ -40,6 +41,7 @@ function run(code, params) {
   const child = spawn('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
     cwd: __dirname,
+    stdio: 'pipe',
     shell: true,
   })
   if (child.status === null) {
