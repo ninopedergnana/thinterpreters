@@ -39,7 +39,8 @@ function run(code, params) {
   const { spawnSync } = require('child_process');
   const child = spawnSync('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
-    cwd: __dirname 
+    cwd: __dirname,
+    shell: true,
   })
   if (child.status === null) {
     return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
@@ -60,5 +61,5 @@ function run(code, params) {
 } */
 
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
+  console.log(`Example app listening at PORT: ${PORT}`)
 })
