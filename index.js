@@ -45,6 +45,7 @@ function run(code, params) {
   if (child.status === null) {
     return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
   }
+  console.log("CHILD STDOUT: ",child.stdout)
   return child.stdout.toString()
 }
 
