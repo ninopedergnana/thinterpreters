@@ -48,12 +48,11 @@ function run(code, params) {
   return child.stdout.toString()
 }
 
-
-/* function run(code, params) {
+/* 
+function run(code, params) {
   const { execFile } = require('child_process');
   const child = execFile('Main', params ? [code, params] : [code], (error, stdout) => {
     if (error) {     
-      console.log(error);
       throw error;
     }
     return stdout.toString();
