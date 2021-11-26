@@ -39,7 +39,7 @@ function run(code, params) {
   const { spawnSync } = require('child_process');
   const child = spawnSync('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
-    cwd: root 
+    cwd: __dirname 
   })
   .on('error', function( err ){ throw err });
 
