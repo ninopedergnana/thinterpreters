@@ -52,6 +52,7 @@ let codeMirrorResult;
 
 
 function handleResult(result) {
+    console.log("result:\n\n", result)
     const json = JSON.parse(result)
     for (const prop in json) {
         switch (prop) {
