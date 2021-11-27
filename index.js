@@ -44,7 +44,7 @@ function run(code, params) {
     stdio: 'pipe',
   })
   if (child.status === null) {
-    return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
+    return `child status null`
   }
   return child.stdout.toString()
 }
