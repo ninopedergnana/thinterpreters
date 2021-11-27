@@ -37,6 +37,8 @@ app.post('/code', (req, res) => {
 const timeout = 5
 
 function run(code, params) {
+  console.log("CODE: ",code,typeof(code))
+  console.log("PARAMS: ",params, typeof(params))
   const { execFileSync } = require('child_process');
   const child = execFileSync('Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
