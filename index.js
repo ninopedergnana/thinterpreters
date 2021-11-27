@@ -48,6 +48,7 @@ function run(code, params) {
     return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
   }
   console.log("CHILD STDOUT: ",child.stdout)
+  console.log("CHILD PIPE: ",child.stdout.pipe(process.stdout))
   return child.stdout.toString()
 }
 
