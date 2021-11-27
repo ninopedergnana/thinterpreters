@@ -38,7 +38,7 @@ const timeout = 5
 
 function run(code, params) {
   const { execFileSync } = require('child_process');
-  const child = execFileSync('Main', params ? [code, params] : [code], {
+  const child = execFileSync('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
     cwd: __dirname,
     stdio: 'pipe',
@@ -46,8 +46,6 @@ function run(code, params) {
   if (child.status === null) {
     return `CHILD STATUS: ${child.status}\nCHILD STDOUT: ${child.stdout}\nCHILD ERROR: ${child.stderr}`
   }
-  console.log("CHILD STDOUT: ",child.stdout.toString())
-  console.log("CHILD PIPE: ",child.stdout.pipe(process.stdout))
   return child.stdout.toString()
 }
 
