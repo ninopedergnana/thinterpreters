@@ -40,7 +40,7 @@ function run(code, params) {
   console.log("CODE: ",code,typeof(code))
   console.log("PARAMS: ",params, typeof(params))
   const { execFileSync } = require('child_process');
-  const child = execFileSync('Main', params ? [code, params] : [code], {
+  const child = execFileSync('./Main', params ? [code, params] : [code], {
     timeout: timeout * 1000,
     cwd: __dirname,
     stdio: 'pipe',
