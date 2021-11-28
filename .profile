@@ -1,2 +1,3 @@
 chmod -R 777 Main
-echo "https://mirrors.kernel.org/ubuntu bionic main" >> /etc/apt/sources.list
+curl -LO http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
+dpkg -i libffi6_3.2.1-8_amd64.deb
