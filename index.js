@@ -51,7 +51,7 @@ function run(code, params) {
 
 function run(code, params) {
   const { execFile } = require('child_process');
-  const child = execFile('node', ['--version'], (error, stdout, stderr) => {
+  const child = execFile('./Main', ['test'], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
