@@ -35,7 +35,7 @@ app.post('/code', (req, res) => {
 })
 
 const timeout = 5
-
+/* 
 function run(code, params) {
   const { spawnSync } = require('child_process');
   const child = spawnSync('./Main', params ? [code, params] : [code], {
@@ -47,7 +47,18 @@ function run(code, params) {
     return `child status null`
   }
   return child.stdout.toString()
-} 
+}  */
+
+function run(code, params) {
+  const { execFile } = require('child_process');
+  const child = execFile('node', ['--version'], (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stdout);
+  });
+}
+
 
 
 /* function run(code, params) {
