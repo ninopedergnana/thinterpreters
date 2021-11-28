@@ -47,17 +47,7 @@ function run(code, params) {
     return `child status null`
   }
   return child.stdout.toString()
-} 
-
-/* function run(code, params) {
-  const { execFile } = require('child_process');
-  const child = execFile('./Main', ['test'], (error, stdout, stderr) => {
-    if (error) {
-      throw error;
-    }
-    console.log(stdout);
-  });
-} */
+}
 
 
 app.listen(PORT, () => {
