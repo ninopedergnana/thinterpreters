@@ -36,9 +36,9 @@ app.post('/code', (req, res) => {
 
 const timeout = 5
 
-/* function run(code, params) {
-  const { execFileSync } = require('child_process');
-  const child = execFileSync('/app/Main', params ? [code, params] : [code], {
+function run(code, params) {
+  const { spawnSync } = require('child_process');
+  const child = spawnSync('wine Main.exe', params ? [code, params] : [code], {
     timeout: timeout * 1000,
     cwd: __dirname,
     stdio: 'pipe',
@@ -47,10 +47,10 @@ const timeout = 5
     return `child status null`
   }
   return child.stdout.toString()
-} */
+} 
 
 
-function run(code, params) {
+/* function run(code, params) {
   const { execFile } = require('child_process');
   const child = execFile('/app/Main', params ? [code, params] : [code], (error, stdout) => {
     if (error) {     
@@ -58,7 +58,7 @@ function run(code, params) {
     }
     return stdout.toString();
   });
-}
+} */
 
 app.listen(PORT, () => {
   console.log(`Example app listening at PORT: ${PORT}`)

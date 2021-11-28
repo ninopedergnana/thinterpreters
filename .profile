@@ -1,3 +1,4 @@
 chmod -R 777 Main
-curl -LO http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
-apt install ./libffi6_3.2.1-8_amd64.deb
+wget https://dl.winehq.org/wine-builds/winehq.key
+apt-key add winehq.key
+apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
