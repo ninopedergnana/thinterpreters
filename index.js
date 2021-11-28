@@ -35,7 +35,7 @@ app.post('/code', (req, res) => {
 })
 
 const timeout = 5
-/* 
+
 function run(code, params) {
   const { spawnSync } = require('child_process');
   const child = spawnSync('./Main', params ? [code, params] : [code], {
@@ -47,9 +47,9 @@ function run(code, params) {
     return `child status null`
   }
   return child.stdout.toString()
-}  */
+} 
 
-function run(code, params) {
+/* function run(code, params) {
   const { execFile } = require('child_process');
   const child = execFile('./Main', ['test'], (error, stdout, stderr) => {
     if (error) {
@@ -57,19 +57,8 @@ function run(code, params) {
     }
     console.log(stdout);
   });
-}
-
-
-
-/* function run(code, params) {
-  const { execFile } = require('child_process');
-  const child = execFile('/app/Main', params ? [code, params] : [code], (error, stdout) => {
-    if (error) {     
-      throw error;
-    }
-    return stdout.toString();
-  });
 } */
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening at PORT: ${PORT}`)
