@@ -78,7 +78,7 @@ function handleResult(result) {
             case 'error':
                 document.getElementById('error').innerHTML = ""
                 $("<h2>Error Message</h2>").prependTo($("#error"))
-                codeMirrorResult = initReadonlyCodeMirror(document.getElementById('error'), json.result, 'goto')
+                codeMirrorResult = initReadonlyCodeMirror(document.getElementById('error'), json.error, 'goto')
                 break;
             default:
                 console.log("Default")
