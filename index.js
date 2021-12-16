@@ -39,12 +39,12 @@ const timeout = 5
 function run(code, params) {
   const { spawnSync } = require('child_process');
   const child = spawnSync('./Main', params ? [code, params] : [code], {
-    timeout: timeout * 1000,
+    timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
     stdio: 'pipe',
   })
   if (child.status === null) {
-    return `child status null`
+    return `{error: "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
   }
   return child.stdout.toString()
 }
