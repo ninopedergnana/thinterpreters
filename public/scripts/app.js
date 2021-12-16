@@ -52,7 +52,6 @@ let codeMirrorResult;
 
 
 function handleResult(result) {
-    console.log("result:",result,":result")
     const json = JSON.parse(result)
     for (const prop in json) {
         switch (prop) {
@@ -76,9 +75,9 @@ function handleResult(result) {
                 $("<h2>Result</h2>").prependTo($("#result"))
                 codeMirrorResult = initReadonlyCodeMirror(document.getElementById('result'), json.result, 'goto')
                 break;
-            case 'errorMessage':
+            case 'error':
                 document.getElementById('error').innerHTML = ""
-                $("<h2>Error Message</h2>").prependTo($("#errorMessage"))
+                $("<h2>Error Message</h2>").prependTo($("#error"))
                 codeMirrorResult = initReadonlyCodeMirror(document.getElementById('error'), json.result, 'goto')
                 break;
             default:
