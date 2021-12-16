@@ -44,7 +44,7 @@ function run(code, params) {
     stdio: 'pipe',
   })
   if (child.status === null) {
-    return `{error: "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
+    return `{"error": "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
   }
   return child.stdout.toString()
 }
