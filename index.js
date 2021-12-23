@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const fs = require('fs');
 const cors = require('cors');
-const { pipeline } = require('stream');
 const PORT = process.env.PORT  || 3001
+const timeout = 5
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 // Static Files
 app.use(express.static('public'))
@@ -18,10 +18,12 @@ app.get("/documentation", function (request, response){
   response.sendFile(__dirname+"/public/views/doc.html");
 });
 
+
 app.get("/examples", function (request, response){
   //show this file when the "/examples" is requested
   response.sendFile(__dirname+"/public/views/examples.html");
 });
+
 
  app.get("/", function (request, response){
   //show this file when the "/" is requested
@@ -34,7 +36,6 @@ app.post('/code', (req, res) => {
   res.send(result)
 })
 
-const timeout = 5
 
 function run(code, params) {
   const { spawnSync } = require('child_process');
