@@ -130,7 +130,7 @@ h2 {
     margin: 0;
 }
 
-.button6 {
+.bluebutton {
     display: inline-block;
     padding: 0.5em 1.1em;
     border-radius:0.15em;
@@ -148,10 +148,10 @@ h2 {
     cursor:pointer;
 }
 
-.button6:active {
+.bluebutton:active {
     top:0.1em;
 }
 
-.button6:hover {
+.bluebutton:hover {
     background-color:#002faf;
 }
