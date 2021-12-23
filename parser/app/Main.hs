@@ -82,6 +82,3 @@ runProgram srcPath params = do
         parseLine currentLine = case parse lineP "" currentLine of
             Right correctLine -> Just correctLine
             Left _ -> Nothing
-
-exit = exitWith ExitSuccess
-exitWithError = exitWith (ExitFailure 1)
