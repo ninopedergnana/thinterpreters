@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })
 
+
 function sendCodeToServer() {
     const code = editor.getValue()
     sendToServer(code)
@@ -29,6 +30,7 @@ function sendCodeAndParamsToServer() {
     const params = inputField.getValue()
     sendToServer(code, params)
 }
+
 
 function sendToServer(code, params) {
     const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
@@ -45,10 +47,7 @@ function sendToServer(code, params) {
         .then(handleResult)
 }
 
-let codeMirrorRead;
-let codeMirrorParsedInput;
-let codeMirrorParsedCode;
-let codeMirrorResult;
+let codeMirrorReadOnly;
 
 
 function handleResult(result) {
@@ -58,30 +57,30 @@ function handleResult(result) {
             case 'readCode':
                 document.getElementById('readCode').innerHTML = ""
                 $("<h2>Read Code</h2>").prependTo($("#readCode"))
-                codeMirrorRead = initReadonlyCodeMirror(document.getElementById('readCode'), json.readCode, 'goto')
+                codeMirrorReadOnly = initReadonlyCodeMirror(document.getElementById('readCode'), json.readCode, 'goto')
                 break;
             case 'parsedCode':
                 document.getElementById('parsedCode').innerHTML = ""
                 $("<h2>Parsed Code</h2>").prependTo($("#parsedCode"))
-                codeMirrorParsedCode = initReadonlyCodeMirror(document.getElementById('parsedCode'), json.parsedCode, 'goto')
+                codeMirrorReadOnly = initReadonlyCodeMirror(document.getElementById('parsedCode'), json.parsedCode, 'goto')
                 break;
             case 'parsedParams':
                 document.getElementById('parsedInputs').innerHTML = ""
                 $("<h2>Parsed Inputs</h2>").prependTo($("#parsedInputs"))
-                codeMirrorParsedInput = initReadonlyCodeMirror(document.getElementById('parsedInputs'), json.parsedParams, 'goto')
+                codeMirrorReadOnly = initReadonlyCodeMirror(document.getElementById('parsedInputs'), json.parsedParams, 'goto')
                 break;
             case 'result':
                 document.getElementById('result').innerHTML = ""
                 $("<h2>Result</h2>").prependTo($("#result"))
-                codeMirrorResult = initReadonlyCodeMirror(document.getElementById('result'), json.result, 'goto')
+                codeMirrorReadOnly = initReadonlyCodeMirror(document.getElementById('result'), json.result, 'goto')
                 break;
             case 'error':
                 document.getElementById('error').innerHTML = ""
                 $("<h2>Error Message</h2>").prependTo($("#error"))
-                codeMirrorResult = initReadonlyCodeMirror(document.getElementById('error'), json.error, 'goto')
+                codeMirrorReadOnly = initReadonlyCodeMirror(document.getElementById('error'), json.error, 'goto')
                 break;
             default:
-                console.log("Default")
+                console.log("Something went wrong, no editor could be displayed.")
                 break;
         }
     }
@@ -95,9 +94,7 @@ function initReadonlyCodeMirror(ele, code, mode) {
         lineWrapping: true,
         readOnly: true
     });
-    /* https://github.com/codemirror/CodeMirror/issues/4762 */
     cm.on('copy', (cm, e) => {
-        // ignore copy by codemirror.  and will copy by browser
         e.codemirrorIgnore = true;
     });
     return cm;
