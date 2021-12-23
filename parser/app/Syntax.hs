@@ -1,6 +1,6 @@
 module Syntax where
 
-import qualified Data.Map.Strict as MS
+-- Abstract Syntax Tree for the GOTO Language -- 
 
 newtype Marker = M { line :: Int }
     deriving (Show, Eq, Ord)
@@ -20,8 +20,11 @@ data Instruction
 
 type Line = (Marker, Instruction)
 
-data LineOrError = Correct Line | Error String
-
 type Program = [Line]
 
-type ProgrammWithError = [LineOrError]
+
+-- Error Handling -- 
+
+data LineOrError = Correct Line | Error String
+
+type ProgrammWithPotentialError = [LineOrError]

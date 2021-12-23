@@ -79,20 +79,20 @@ printProgram p = case p of
         , printProgram rest
         ]
 
-printProgramWithError :: ProgrammWithError -> String
-printProgramWithError p = case p of
+printProgramWithPotentialError :: ProgrammWithPotentialError -> String
+printProgramWithPotentialError p = case p of
     [] -> ""
     (Correct (M n, instruction)):rest -> concat
         [ "M", show n, ": "
         , printParsedInstructions instruction
         , "; "
-        , printProgramWithError rest
+        , printProgramWithPotentialError rest
         ]
     (Error msg):rest -> concat
         [ "\n\nThis line contains a syntax error:\n",
         msg
         , "\n\n"
-        , printProgramWithError rest
+        , printProgramWithPotentialError rest
         ]
 
 printParsedProgram :: Program -> String
