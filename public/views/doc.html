@@ -39,10 +39,105 @@
                     <h1>
                         Documentation
                     </h1>
-                    <p>
-                        GOTO Programs are cool
-                    </p>
                 </header>
-            
+            </section>
+                    <h2 class="examples" id="doc-title">
+                        Syntax
+                    </h2>
+                    <br>
+                    <p class="examples">
+                        GOTO Programs consists of a sequence of instructions I, each introduced by a marker Mi:.
+                        <br>
+                        In order to improve the readability of GOTO programs, you usually write the instructions in enumerated order of the markers,
+                        with each instruction on a separate line of code.
+                        <br>
+                        <br>
+                        The following options are permitted as possible instructions.
+                        <br>
+                        <br>
+                    </p>
+
+                    <div class=examples>
+                        <div class=readOnlyExample id=documentation1></div>
+                        <div class=readOnlyExampleDescription>
+                            <h3>Addition</h3>
+                            <p>The variable xi is assigned the value of xj + c</p>
+                        </div>
+                    </div>
+                    <div class=examples>
+                        <div class=readOnlyExample id=documentation2></div>
+                        <div class=readOnlyExampleDescription>
+                            <h3>Subtraction</h3>
+                            <p>The variable xi is assigned the value of xj - c or the value 0 if the assignment tries to assign a negative value</p>
+                        </div>
+                    </div>
+                    <div class=examples>
+                        <div class=readOnlyExample id=documentation3></div>
+                        <div class=readOnlyExampleDescription>
+                            <h3>Unconditional jump</h3>
+                            <p>The code continues at Mi</p>
+                        </div>
+                    </div>
+                    <div class=examples>
+                        <div class=readOnlyExample id=documentation4></div>
+                        <div class=readOnlyExampleDescription>
+                            <h3>Conditional jump</h3>
+                            <p>If the condition is met, the code continues with Mi, otherwise it will continue with the next line M(i + 1)</p>
+                        </div>
+                    </div>
+                    <div class=examples>
+                        <div class=readOnlyExample id=documentation5></div>
+                        <div class=readOnlyExampleDescription>
+                            <h3>Halt</h3>
+                            <p>Halt stops the program and returns x0</p>
+                        </div>
+                    </div>
+
+                <h2 class="examples">
+                    Additional Information
+                </h2>
+                
+                <ul class="additional-info-list">
+                    <li>
+                        <p>The variables xi and xj can be the same. You can use x1 = x1 + 1 to increment x1 by 1 for example. The constant c can only be an Integer value.</p>
+                    </li>
+                    <li>
+                        <p>If there is no jump label to a new marker, the program will continue with the next line.</p>
+                    </li>
+                    <li>
+                        <p>If the last line is reached and there is no jump label, the program will halt and return x0.</p>
+                    </li>
+                    <li>
+                        <p>PARSE will only parse the source code, not run the program. RUN will run the program with the given inputs.</p>
+                    </li>
+                    <li>
+                        <p>The result will always be returned in x0 with a default value of 0.</p>
+                    </li>
+                </ul>
+
+                <h2 class="examples">
+                    Error handling
+                </h2>
+
+                <p class="examples">
+                    If your code contains a syntax error, the editor will highlight the faulty line for you. Try to fix it and run the code again. If you're stuck, 
+                    consider consulting the examples for help.
+                    <br>
+                    If you implemented an infinite loop, the process will terminate after 5 seconds and notify you of your mistake.
+                    <br>
+                    If your code deviates from the specified behaviour and you don't get the expected result without having received any syntax error messages, you probably implemented a logical mistake in your source code. The interpreter
+                    can't catch these types of mistakes. You're on your own :)
+                </p>
+
+                <h2 class="examples">
+                    Source Code
+                </h2>
+                <p class="examples">
+                    https://github.zhaw.ch/pedernin/projektarbeit
+                </p>
+                
+
+            <script src="scripts/documentation.js"></script>    
+        </div>  
     </body>
 </html>
