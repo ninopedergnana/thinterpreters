@@ -16,11 +16,16 @@ main = do
     args <- getArgs
     case args of
         [] -> do
-            putStrLn "Please provide at least the first parameter with the code" >> exitWithError
+            putStrLn $ concat 
+                        [   
+                            "{",
+                            "\"error\": " ++ "\"" ++ "Please provide a valid program" ++ "\"",
+                            "}"
+                        ]
         [code, params] -> do
             parsedParams <- parseParams params
-            parsedCode <- parseCodeNew code
-            result <- runProgramCode code parsedParams
+            parsedCode <- parseCode code
+            result <- runCode code parsedParams
             putStrLn $ concat 
                         [   
                             "{",
@@ -31,7 +36,7 @@ main = do
                             "}"
                         ]
         [code] -> do
-            parsedCode <- parseCodeNew code
+            parsedCode <- parseCode code
             putStrLn $ concat 
                         [   
                             "{",
@@ -41,24 +46,23 @@ main = do
                         ]
 
 
-runProgramCode :: String -> [Integer] -> IO Integer
-runProgramCode srcCode params = do
-    return (execute params (mapMaybe f (lines srcCode)))
+runCode :: String -> [Integer] -> IO Integer
+runCode srcCode params = do
+    return (execute params (mapMaybe parseLine (lines srcCode)))
     where
-        f line = case parse lineP "" line of
-            Right line -> Just line
+        parseLine currentLine = case parse lineP "" currentLine of
+            Right correctLine -> Just correctLine
             Left _ -> Nothing
 
 
-parseCodeNew :: String  -> IO String
-parseCodeNew [] = return "Your program is as empty as my soul :'("
-parseCodeNew srcCode = do
-    return (printProgramWithError (map f (lines srcCode)))
+parseCode :: String -> IO String
+parseCode [] = return "Your program is empty!"
+parseCode srcCode = do
+    return (printProgramWithPotentialError (map parseLine (lines srcCode)))
     where
-        f srcLine = case parse lineP "" srcLine of
-            Right line -> Correct line
-            Left _ -> Error srcLine
-                
+        parseLine currentLine = case parse lineP "" currentLine of
+            Right correctLine -> Correct correctLine
+            Left _ -> Error currentLine
 
 
 parseParams str = case parse inputP "" str of
@@ -69,23 +73,15 @@ parseParams str = case parse inputP "" str of
         return []
 
 
--- with src file to test locally
+-- test a file from src\ locally
 runProgram :: String -> [Integer] -> IO Integer
-runProgram srcPath args = do
-    src <- readFile srcPath
-    return (execute args(mapMaybe f(lines src)))
+runProgram srcPath params = do
+    srcCode <- readFile srcPath
+    return (execute params (mapMaybe parseLine (lines srcCode)))
     where
-        f line = case parse lineP "" line of
-            Right line -> Just line
+        parseLine currentLine = case parse lineP "" currentLine of
+            Right correctLine -> Just correctLine
             Left _ -> Nothing
-            
-{- parseCode :: String -> IO ()
-parseCode srcCode = do
-    putStrLn (printProgram(mapMaybe f(lines srcCode)))
-    where
-        f line = case parse lineP "" line of
-            Right line -> Just line
-            Left err -> error(show err) -}
 
 exit = exitWith ExitSuccess
 exitWithError = exitWith (ExitFailure 1)
