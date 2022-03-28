@@ -44,7 +44,9 @@ function sendCodeToServer(code, prog, params) {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json; charset=utf-8',
+            "Access-Control-Allow-Origin" : "*", 
+            "Access-Control-Allow-Credentials" : true 
         }
     })
         .then(r => r.text())
@@ -55,9 +57,6 @@ let codeMirrorReadOnly;
 
 
 function handleResult(result) {
-    console.log("result")
-    console.log(result)
-    console.log(JSON.parse(result))
     const json = JSON.parse(result)
     for (const prop in json) {
         switch (prop) {
