@@ -1,1 +1,2 @@
-chmod -R 777 Main
+chmod -R 777 WhileMain
+chmod -R 777 GotoMain

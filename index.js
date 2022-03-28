@@ -43,7 +43,7 @@ function run(code, params, prog) {
   if(prog === "while") {
     mainPath = './WhileMain'
   }
-  const child = spawnSync('./GotoMain', params ? [code, params] : [code], {
+  const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
     stdio: 'pipe',
