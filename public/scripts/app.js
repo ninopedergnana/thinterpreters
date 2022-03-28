@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function sendCodeToServer1() {
+    console.log("yo0")
     const code = editor.getValue()
     const gotoKeyWords = ["goto", "M1:", "halt"]
     const isGotoProgram = gotoKeyWords.some(el => code.includes(el))
@@ -28,6 +29,7 @@ function sendCodeToServer1() {
 
 
 function sendCodeAndParamsToServer() {
+    console.log("yo1")
     const code = editor.getValue()
     const params = inputField.getValue()
     const gotoKeyWords = ["goto", "M1:", "halt"]
@@ -37,6 +39,7 @@ function sendCodeAndParamsToServer() {
 
 
 function sendCodeToServer(code, prog, params) {
+    console.log("yo2")
     const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
     const srcCode = `{"code":${JSON.stringify(code)}, "prog": ${JSON.stringify(prog)}}`
     fetch(url, {

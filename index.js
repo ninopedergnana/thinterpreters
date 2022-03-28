@@ -57,7 +57,7 @@ function run(code, params, prog) {
   console.log("child status");
   console.log(child.status);
   if (child.status === null) {
-    return `{"error": "Process terminated with exit code 10! Maybe you implemented an endless loop."}`
+    return `{"error": "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
   }
   return child.stdout.toString()
 }
