@@ -39,10 +39,11 @@ app.post('/code', (req, res) => {
 
 function run(code, params, prog) {
   const { spawnSync } = require('child_process');
-  var mainPath = './GotoMain'
+  var mainPath = './parser/app/Goto/GotoMain'
   if(prog === "while") {
-    mainPath = './WhileMain'
+    mainPath = './parser/app/While/WhileMain'
   }
+  console.log(mainPath);
   const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
