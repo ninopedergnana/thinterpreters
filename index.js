@@ -32,33 +32,24 @@ app.get("/examples", function (request, response){
   
 
 app.post('/code', (req, res) => {
-  console.log("test1");
   const result = run(req.body.code, req.query.args, req.body.prog)
-  console.log("test2");
   res.send(result)
-  console.log("test3");
 })
 
 
 function run(code, params, prog) {
-  console.log("test4");
   const { spawnSync } = require('child_process');
-  let mainPath = './GotoMain'
+  var mainPath = './GotoMain'
   if(prog === "while") {
     mainPath = './WhileMain'
   }
-  console.log("mainpath");
-  console.log(mainPath);
-  const child = spawnSync(mainPath, params ? [code, params] : [code], {
+  const child = spawnSync('./GotoMain', params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
     stdio: 'pipe',
   })
-  console.log("child status");
-  console.log(child.status);
   if (child.status === null) {
-    console.log("child status: " + child.status + child)
-    return `{"error": "Process terminated with exit code 1! Maybe you implemented an endless loop. ${child}, ${child.status}"}`
+    return `{"error": "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
   }
   return child.stdout.toString()
 }
