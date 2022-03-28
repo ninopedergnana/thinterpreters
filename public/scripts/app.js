@@ -2,7 +2,7 @@ let editor
 let inputField
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("parse").addEventListener("click", sendCodeToServer);
+    document.getElementById("parse").addEventListener("click", sendCodeToServer1);
     document.getElementById("run").addEventListener("click", sendCodeAndParamsToServer);
     
     editor = CodeMirror(document.getElementById('srccode'), {
@@ -19,22 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-function sendCodeToServer() {
+function sendCodeToServer1() {
     const code = editor.getValue()
-    sendToServer(code)
+    const gotoKeyWords = ["goto", "M1:", "halt"]
+    const isGotoProgram = gotoKeyWords.some(el => code.includes(el))
+    isGotoProgram ? sendCodeToServer(code, "goto") : sendCodeToServer(code, "while")
 }
 
 
 function sendCodeAndParamsToServer() {
     const code = editor.getValue()
     const params = inputField.getValue()
-    sendToServer(code, params)
+    const gotoKeyWords = ["goto", "M1:", "halt"]
+    const isGotoProgram = gotoKeyWords.some(el => code.includes(el))
+    isGotoProgram ? sendCodeToServer(code, "goto", params) : sendCodeToServer(code, "while", params)
 }
 
 
-function sendToServer(code, params) {
+function sendCodeToServer(code, prog, params) {
     const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
-    const srcCode = `{"code":${JSON.stringify(code)}}`
+    const srcCode = `{"code":${JSON.stringify(code)}, "prog": ${JSON.stringify(prog)}}`
     fetch(url, {
         body: srcCode,
         method: 'POST',

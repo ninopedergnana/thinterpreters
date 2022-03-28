@@ -32,14 +32,18 @@ app.get("/examples", function (request, response){
   
 
 app.post('/code', (req, res) => {
-  const result = run(req.body.code, req.query.args)
+  const result = run(req.body.code, req.query.args, req.body.prog)
   res.send(result)
 })
 
 
-function run(code, params) {
+function run(code, params, prog) {
   const { spawnSync } = require('child_process');
-  const child = spawnSync('./Main', params ? [code, params] : [code], {
+  let mainPath = './parser/app/Goto/Main'
+  if(prog === "while") {
+    mainPath = './parser/app/While/Main'
+  }
+  const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
     stdio: 'pipe',
