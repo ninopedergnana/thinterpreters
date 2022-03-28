@@ -25,7 +25,7 @@ app.get("/examples", function (request, response){
 });
 
 
- app.get("/", function (request, response){
+app.get("/", function (request, response){
   //show this file when the "/" is requested
   response.sendFile(__dirname+"/public/views/index.html");
 });
@@ -33,18 +33,17 @@ app.get("/examples", function (request, response){
 
 app.post('/code', (req, res) => {
   const result = run(req.body.code, req.query.args, req.body.prog)
+  console.log(result)
   res.send(result)
 })
 
 
 function run(code, params, prog) {
   const { spawnSync } = require('child_process');
-  var mainPath = './GotoMain'
-  console.log("test" + mainPath);
+  var mainPath = './parser/app/Goto/GotoMain'
   if(prog === "while") {
-    mainPath = './WhileMain'
+    mainPath = './parser/app/While/WhileMain'
   }
-  console.log(mainPath);
   const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,

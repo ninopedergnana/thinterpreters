@@ -38,7 +38,10 @@ function sendCodeAndParamsToServer() {
 
 function sendCodeToServer(code, prog, params) {
     const url = `https://thinterpreters.herokuapp.com/code${params ? `?args=${params}` : ''}`
+    //const url = `http://localhost:3001/code${params ? `?args=${params}` : ''}`
+
     const srcCode = `{"code":${JSON.stringify(code)}, "prog": ${JSON.stringify(prog)}}`
+    
     fetch(url, {
         body: srcCode,
         method: 'POST',
