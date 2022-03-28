@@ -43,11 +43,14 @@ function run(code, params, prog) {
   if(prog === "while") {
     mainPath = 'WhileMain'
   }
+  console.log("mainpath");
+  console.log(mainPath);
   const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
     stdio: 'pipe',
   })
+  console.log("child status");
   console.log(child.status);
   if (child.status === null) {
     return `{"error": "Process terminated with exit code 1! Maybe you implemented an endless loop."}`
