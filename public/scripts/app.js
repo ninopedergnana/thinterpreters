@@ -1,3 +1,5 @@
+const res = require("express/lib/response");
+
 let editor
 let inputField
 
@@ -55,6 +57,9 @@ let codeMirrorReadOnly;
 
 
 function handleResult(result) {
+    console.log("result")
+    console.log(result)
+    console.log(JSON.parse(result))
     const json = JSON.parse(result)
     for (const prop in json) {
         switch (prop) {
