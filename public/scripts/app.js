@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 let editor
 let inputField
 
