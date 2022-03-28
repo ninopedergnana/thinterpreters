@@ -32,12 +32,16 @@ app.get("/examples", function (request, response){
   
 
 app.post('/code', (req, res) => {
+  console.log("test1");
   const result = run(req.body.code, req.query.args, req.body.prog)
+  console.log("test2");
   res.send(result)
+  console.log("test3");
 })
 
 
 function run(code, params, prog) {
+  console.log("test4");
   const { spawnSync } = require('child_process');
   let mainPath = 'GotoMain'
   if(prog === "while") {
