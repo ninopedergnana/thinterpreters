@@ -38,7 +38,6 @@ app.post('/code', (req, res) => {
 
 
 function run(code, params, prog) {
-  console.log(prog);
   const { spawnSync } = require('child_process');
   let mainPath = './parser/app/Goto/Main'
   if(prog === "while") {
