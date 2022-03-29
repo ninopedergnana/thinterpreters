@@ -33,7 +33,7 @@ app.get("/", function (request, response){
 
 app.post('/code', (req, res) => {
   const result = run(req.body.code, req.query.args, req.body.prog)
-  console.log(result)
+  console.log("result \n:" + result)
   res.send(result)
 })
 
@@ -44,6 +44,7 @@ function run(code, params, prog) {
   if(prog === "while") {
     mainPath = './parser/app/While/WhileMain'
   }
+  console.log("mainPath \n:" + mainPath)
   const child = spawnSync(mainPath, params ? [code, params] : [code], {
     timeout: timeout * 1000, // 5 seconds
     cwd: __dirname,
