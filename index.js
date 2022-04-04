@@ -32,8 +32,8 @@ app.get("/", function (request, response){
   
 
 app.post('/code', (req, res) => {
+  console.log("res: " + res.body.code + req.query.args)
   const result = run(req.body.code, req.query.args, req.body.prog)
-  console.log("result \n:" + result)
   res.send(result)
 })
 
