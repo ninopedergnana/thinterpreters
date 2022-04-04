@@ -60,6 +60,7 @@ let codeMirrorReadOnly;
 
 
 function handleResult(result) {
+	console.log("handleResult" + result)
     const json = JSON.parse(result)
     for (const prop in json) {
         switch (prop) {

@@ -2,7 +2,7 @@ let codeMirrorReadOnly
 
 document.addEventListener('DOMContentLoaded', () => {
     codeMirrorReadOnly = CodeMirror(document.getElementById('goto-addition'), {
-        value: 'M1: if x1 = 0 then goto M5;\nM2: x1 = x1 - 1;\nM3: x0 = x0 + 1;\nM4: goto M1;\nM5: if x2 = 0 then goto M9;\nM6: x2 = x2 - 1;\nM7: x0 = x0 + 1;\nM8: goto M5;\nM9: halt;',
+		value: 'While x1 > 0 Do\nx2 = x2 + 1;\nx1 = x1 - 1\nEnd;\nx0 = x2 + 0',
         mode: 'goto',
         lineNumbers: false,
         readOnly: true
