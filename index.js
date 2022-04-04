@@ -32,7 +32,7 @@ app.get("/", function (request, response){
   
 
 app.post('/code', (req, res) => {
-  console.log("res: " + res.body.code + req.query.args)
+  console.log("res: " + req.body.code + req.query.args)
   const result = run(req.body.code, req.query.args, req.body.prog)
   res.send(result)
 })
