@@ -1,0 +1,10 @@
+ubuntu vm mit 50 gb platz for safety reasons
+sudo apt-get install -y haskell-stack  // stack https://zoomadmin.com/HowToInstall/UbuntuPackage/haskell-stack
+apt-get install haskell-platform -y  // ghc and cabal https://www.cyberithub.com/how-to-install-haskell-platform-on-ubuntu-20-04-lts/
+cabal update // fetch hackage packages
+cabal get megaparsec // erstellt ordner (ist optional)
+cabal install megaparsec  // http://dev.stephendiehl.com/hask/#parsec
+cd into haskell project root
+change .cabal file to correct executable path, check .yaml file for confirmation
+stack build
+ghc the Main file in its directory
