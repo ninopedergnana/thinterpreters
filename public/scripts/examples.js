@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     codeMirrorReadOnly = CodeMirror(document.getElementById('while-absolute-diff'), {
-        value: 'x4 = x2 + 0;x3 = x1 - x2;\nLoop x3 Do\n    x4 = x1 + 0\nEnd;\nx5 = x2 + 0;\nx3 = x2 - x1;\nLoop x3 Do\n    x5 = x1 + 0\nEnd;x0 = x4 - x5',
+        value: 'x4 = x2 + 0;\nx3 = x1 - x2;\nLoop x3 Do\n    x4 = x1 + 0\nEnd;\nx5 = x2 + 0;\nx3 = x2 - x1;\nLoop x3 Do\n    x5 = x1 + 0\nEnd;\nx0 = x4 - x5',
         mode: 'goto',
         lineNumbers: false,
         readOnly: true
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     codeMirrorReadOnly = CodeMirror(document.getElementById('while-fibonacci'), {
-        value: 'x2 = 0 + 0;\nx0 = 1 + 0;\nWhile x1 > 0 Do\    x4 = x0 + 0;\n    x0 = x2 + x0;\n    x2 = x4 + 0;\n    x1 = x1 - 1\nEnd',
+        value: 'x2 = 0 + 0;\nx0 = 1 + 0;\nWhile x1 > 0 Do\n    x4 = x0 + 0;\n    x0 = x2 + x0;\n    x2 = x4 + 0;\n    x1 = x1 - 1\nEnd',
         mode: 'goto',
         lineNumbers: false,
         readOnly: true
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     codeMirrorReadOnly = CodeMirror(document.getElementById('while-mul'), {
-        value: 'Loop x1 D\n    x0 = x0 + x2\nEnd',
+        value: 'Loop x1 Do\n    x0 = x0 + x2\nEnd',
         mode: 'goto',
         lineNumbers: false,
         readOnly: true
