@@ -41,6 +41,7 @@
                     </h1>
                 </header>
             </section>
+                <h1> GOTO</h1>
                     <h2 class="examples" id="doc-title">
                         Syntax
                     </h2>
@@ -129,13 +130,126 @@
                     can't catch these types of mistakes. You're on your own :)
                 </p>
 
-                <h2 class="examples">
-                    Source Code
-                </h2>
+                <h1>LOOP</h1>
+                <h2 class="examples">Syntax</h2>
                 <p class="examples">
-                    https://github.zhaw.ch/pedernin/projektarbeit
+                    Loop programs constist of the following syntactical basic elements.
                 </p>
-                
+
+                <div class="loop-syntax-list">
+                    <ul>
+                        <li>
+                            <p>Variables: x0, x1, x2, ...</p>
+                        </li>
+                        <li>
+                            <p>Constants: 0, 1, 2, 3, ...</p>
+                        </li>
+                        <li>
+                            <p>Separator: ;</p>
+                        </li>
+                        <li>
+                            <p>Assignment: =</p>
+                        </li>
+                        <li>
+                            <p>Operation Signs: +, - ;</p>
+                        </li>
+                        <li>
+                            <p>Key words: Loop, Do, End</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="examples">
+                    Assignments: x = a + b and x = a - b, where x is a variable and a and b stand for variables or constants.
+                    <br>
+                    Sequences: When P and Q are LOOP program, P;Q is also a LOOP program.
+                    <br>
+                    Loops: If P is a LOOP program, then for each variable x: "LOOP x DO P END" is also a loop progam.
+                </p>
+                <p class="examples">Loop programs begin with the keyword "Loop" and end with the keyword "End".<br>
+                The literal between the "Loop" and the "Do" keyword indicates the number of iterations of the subroutine. If the literal has a value
+                    smaller than or equal to zero, the subroutine won't be executed.</p>
+
+                <h1>WHILE</h1>
+                <h2 class="examples">Definition</h2>
+
+                <p class="examples">
+                    If the loop language is extended by the additional syntactic module WHILE xi > 0 DO ... END for all variables xi, then
+                    you get the set of all WHILE programs.
+                    <br>
+                    Every LOOP program is also a WHILE program.
+                    <br>
+                    WHILE programs don't always terminate. Under certain circumstances, they can run forever.
+                    <br>
+                    The semantics of WHILE programs is analogous to the ones of LOOP programs.
+                </p>
+
+                <h2 class="examples">Syntax</h2>
+                <h3 class="examples">Literals</h3>
+                <p class="examples">Literals are either variables or constants.</p>
+                <h3 class="examples">Variables</h3>
+                <p class="examples">Variables start with the letter x and are followed by a natural number, i.e. (x0, x1, x2, ...). Variables starting with any different letter 
+                  will not be recognized as such by the parser.<br>Depending on the number of parameters for your program, the first n variables after x0 will be assigned with the corresponding values. Let's 
+                say your program needs 3 parameters. The three values typed into the parameter field will be assigned to the variables x1, x2, x3 accordingly. 
+                x0 has the function of the return value (the result of your program). The remaining variables (x4, x5, x6, ...) can be used freely.<br>
+                After parsing, variables will have the prettyfied form "X i" for i in 0, 1, 2, ... .
+                    <br>
+                If not defined, variables are initialised with the value 0.</p>
+
+                <h3 class="examples">Constants</h3>
+                <p class="examples">Since the parser is based on the set of natural numbers (0, 1, 2, ...), constants are limited to these numbers.<br>
+                After parsing, constants will have the prettyfied form "C i" for i in 0, 1, 2, ... .<br>
+              
+                <h3 class="examples">Terms</h3>
+                    <p class="examples">Terms are simple arithmetic expressions of literals.<br>
+                    After parsing, terms will be written in prefix notation, starting with the operation and followed by the operands.<br>
+                    Please note that arithmetic expressions are binary operations and therefore always need two operands.<br>
+                    Plus denotes the addition of two natural numbers, i.e. x2 + 1 parses to "Plus (X 2) (C 1)".<br>
+                    Minus denotes the subtraction of two natural numbers, i.e. x3 - x1 parses to "Minus (X 3) (X 1)".<br>
+                    Multiplication and division are not recognized by the parser. 
+                    Nevertheless, you can write a program for these operations see "Examples"</p>
+
+                <h3 class="examples">Programs</h3>
+                <p class="examples">A program is one of the following constructs:</p>
+                <div class="loop-syntax-list">
+                    <ul>
+                        <li>Empty program</li>
+                        <li>Assignment</li>
+                        <li>Loop program</li>
+                        <li>While program</li>
+                        <li>Sequence of programs</li>
+                    </ul>
+                </div>
+                 
+                <h3 class="examples">Assignments</h3>
+                <p class="examples">An assignment has the form variable = term.<br>
+                 Please note that terms are based on binary arithmetic expressions. As a consequence, it is not possible 
+                    to assign a variable to a literal directly. Instead, transform the literal into a Term.</p>
+
+                <h3 class="examples">
+                    How to write WHILE programs
+                </h3>
+                <p class="examples">While programs begin with the keyword "While" and end with the keyword "End". They have the following form:</p>
+                <div class="examples">
+                    <div class=readOnlyExample id=documentation6></div>
+                </div>
+                <p class="examples">The condition between the "While" and the "Do" keyword has to be in the form "variable > 0". Any condition
+                    having another form will result in a parse error. The "End" keyword indicates the end of the subroutine.<br>
+                Check for other conditions by making use of additional variables and 
+                    the arithmetic operations addition or subtraction. If you want to check x1 > x2, for example, introduce a new variable 
+                    x3 = x1 - x2 and check whether x3 > 0 since x3 > 0 implies that x1 > x2.</p>
+                <p class="examples">In order to chain programs and execute them in sequence, they have to be separated by a semicolon.</p>
+                <h3 class="examples">Example:</h3>
+                <div class="examples">
+                    <div class=readOnlyExample2 id=documentation7></div>
+                </div>                
+                <h3 class="examples">Comments</h2>
+                <p class="examples">Line comments can be indicated with "//" at the beginning of a new line. Comments will be
+                  ignored by the parser. 
+                </p>
+                <h3 class="examples">Common Mistakes</h3>
+              <p class="examples">The parser has only parsed a part of my programm and not everything written into the editor.<br>
+              Did you forget a semicolon? Different programs have to be separated by semicolons in order to run them in sequence.</p>
 
             <script src="scripts/documentation.js"></script>    
         </div>  
